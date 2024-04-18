@@ -8,7 +8,7 @@ from .outline_icon import OutlineIcon
 from .filled_icon import FilledIcon
 
 
-class TablerIcon:
+class TablerIcons:
 
     # Constants
     __DEFAULT_SVG_SIZE = 24
@@ -28,17 +28,17 @@ class TablerIcon:
 
         if type(icon) == OutlineIcon:
             color_property = 'stroke'
-            svg_path = TablerIcon.__get_directory() + '/icons/outline/' + icon.value
+            svg_path = TablerIcons.__get_directory() + '/icons/outline/' + icon.value
         else:
             color_property = 'fill'
-            svg_path = TablerIcon.__get_directory() + '/icons/filled/' + icon.value
+            svg_path = TablerIcons.__get_directory() + '/icons/filled/' + icon.value
 
-        scale = size / TablerIcon.__DEFAULT_SVG_SIZE
+        scale = size / TablerIcons.__DEFAULT_SVG_SIZE
 
         svg_string = open(svg_path, "rt").read()
-        adjusted_svg_string = (svg_string.replace('width="' + str(TablerIcon.__DEFAULT_SVG_SIZE) + '"',
+        adjusted_svg_string = (svg_string.replace('width="' + str(TablerIcons.__DEFAULT_SVG_SIZE) + '"',
                                                   'width="' + str(size) + '"')
-                               .replace('height="' + str(TablerIcon.__DEFAULT_SVG_SIZE) + '"',
+                               .replace('height="' + str(TablerIcons.__DEFAULT_SVG_SIZE) + '"',
                                         'height="' + str(size) + '"'
                                         ' transform="scale(' + str(scale) + ')"')
                                .replace('stroke-width="2"',

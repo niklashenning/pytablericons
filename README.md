@@ -27,12 +27,12 @@ pip install pytablericons
 ```
 
 ## Usage
-Import `TablerIcon` and call the `load()` method with the desired `OutlineIcon` or `FilledIcon`:
+Import `TablerIcons` and call the `load()` method with the desired `OutlineIcon` or `FilledIcon`:
 ```python
-from pytablericons import TablerIcon, OutlineIcon, FilledIcon
+from pytablericons import TablerIcons, OutlineIcon, FilledIcon
 
-icon_rotate = TablerIcon.load(OutlineIcon.ROTATE)      # Outline icon
-icon_check = TablerIcon.load(FilledIcon.CIRCLE_CHECK)  # Filled icon
+icon_rotate = TablerIcons.load(OutlineIcon.ROTATE)      # Outline icon
+icon_check = TablerIcons.load(FilledIcon.CIRCLE_CHECK)  # Filled icon
 ```
 
 > **NOTE:** <br>...
@@ -49,9 +49,9 @@ Setting a custom size, color, and stroke width:
 
 - **Using an icon with Pillow:**
 ```python
-from pytablericons import TablerIcon, FilledIcon
+from pytablericons import TablerIcons, FilledIcon
 
-icon = TablerIcon.load(FilledIcon.CIRCLE_CHECK)  # Load icon
+icon = TablerIcons.load(FilledIcon.CIRCLE_CHECK)  # Load icon
 icon.show()  # Show icon
 print(icon.size)  # Print icon size
 ```
@@ -60,7 +60,7 @@ print(icon.size)  # Print icon size
 ```python
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QMainWindow, QPushButton
-from pytablericons import TablerIcon, OutlineIcon
+from pytablericons import TablerIcons, OutlineIcon
 
 
 class Window(QMainWindow):
@@ -68,7 +68,7 @@ class Window(QMainWindow):
         super().__init__(parent=None)
         
         # Load icon
-        icon_rotate = TablerIcon.load(OutlineIcon.ROTATE, color='#000')
+        icon_rotate = TablerIcons.load(OutlineIcon.ROTATE, color='#000')
         
         # Create button with icon
         self.button = QPushButton(self)

@@ -1,1 +1,1 @@
-from .tabler_icons import TablerIcon, OutlineIcon, FilledIcon
+from .tabler_icons import TablerIcons, OutlineIcon, FilledIcon
