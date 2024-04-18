@@ -5,7 +5,7 @@ with open('README.md', 'r') as fh:
     readme = "\n" + fh.read()
 
 setup(
-    name='py-tabler-icons',
+    name='pytablericons',
     version='1.0.0',
     author='Niklas Henning',
     author_email='business@niklashenning.com',
@@ -21,10 +21,10 @@ setup(
         'Pillow>=10.1.0'
     ],
     python_requires='>=3.7',
-    description='Python cross-platform wrapper for the Tabler Icons library',
+    description='A Python wrapper for the Tabler Icons library with 5237 high-quality icons',
     long_description=readme,
     long_description_content_type='text/markdown',
-    url='https://github.com/niklashenning/pyqt-toast',
+    url='https://github.com/niklashenning/py-tabler-icons',
     keywords=['python', 'icon', 'icons', 'svg', 'tabler-icons'],
     classifiers=[
         'Programming Language :: Python :: 3',
