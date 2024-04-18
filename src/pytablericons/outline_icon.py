@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class OutlineIcon(str, Enum):
+class OutlineIcon(Enum):
 
     A_B_2 = 'a-b-2.svg'
     A_B_OFF = 'a-b-off.svg'

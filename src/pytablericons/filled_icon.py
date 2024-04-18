@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class FilledIcon(str, Enum):
+class FilledIcon(Enum):
 
     ACCESSIBLE = 'accessible.svg'
     AD_CIRCLE = 'ad-circle.svg'
