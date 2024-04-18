@@ -2,6 +2,8 @@
 
 [![PyPI](https://img.shields.io/badge/pypi-v1.0.0-blue)](https://github.com/niklashenning/pytablericons)
 [![Python](https://img.shields.io/badge/python-3.7+-blue)](https://github.com/niklashenning/pytablericons)
+[![Build](https://img.shields.io/badge/build-passing-neon)](https://github.com/niklashenning/pytablericons)
+[![Coverage](https://img.shields.io/badge/coverage-100%25-green)](https://github.com/niklashenning/pytablericons)
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/niklashenning/pytablericons/blob/master/LICENSE)
 
 Python wrapper for the **[Tabler Icons](https://github.com/tabler/tabler-icons)** library - a set of 5237 free MIT-licensed high-quality SVG icons for you to use in your python projects
@@ -98,6 +100,18 @@ More in-depth examples can be found in the [examples](examples) folder.
     <img src="https://raw.githubusercontent.com/tabler/tabler-icons/master/.github/preview/icons-filled.png" alt="Tabler Icons preview" width="838">
   </picture>
 </p>
+
+## Tests
+Installing the required test dependencies [pytest](https://github.com/pytest-dev/pytest) and [coveragepy](https://github.com/nedbat/coveragepy):
+```
+pip install pytest coverage
+```
+
+To run the tests with coverage, clone this repository, go into the main directory and run:
+```
+coverage run -m pytest
+coverage report --ignore-errors -m
+```
 
 ## License
 This software is licensed under the [MIT license](https://github.com/niklashenning/pytablericons/blob/master/LICENSE).
