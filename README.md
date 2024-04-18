@@ -1,8 +1,8 @@
 # pytablericons
 
-[![PyPI](https://img.shields.io/badge/pypi-v1.0.0-blue)](https://github.com/niklashenning/py-tabler-icons)
-[![Python](https://img.shields.io/badge/python-3.7+-blue)](https://github.com/niklashenning/py-tabler-icons)
-[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/niklashenning/py-tabler-icons/blob/master/LICENSE)
+[![PyPI](https://img.shields.io/badge/pypi-v1.0.0-blue)](https://github.com/niklashenning/pytablericons)
+[![Python](https://img.shields.io/badge/python-3.7+-blue)](https://github.com/niklashenning/pytablericons)
+[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/niklashenning/pytablericons/blob/master/LICENSE)
 
 Python wrapper for the **[Tabler Icons](https://github.com/tabler/tabler-icons)** library - a set of 5237 free MIT-licensed high-quality SVG icons for you to use in your python projects
 
@@ -17,9 +17,9 @@ Python wrapper for the **[Tabler Icons](https://github.com/tabler/tabler-icons)*
 ## Features
 - 5237 free MIT-licensed high-quality SVG icons
 - Supports custom icon size, color, and stroke width
-- Supports IDE autocompletion for the icons
+- Supports IDE autocompletion
 - Works cross-platform without any extra dependencies
-- Easy to use with `PyQt5`, `PyQt6`, `PySide2`, `PySide6`, `Tkinter`, etc.
+- Easy to use with `Pillow`, `PyQt5`, `PyQt6`, `PySide2`, `PySide6`, `Tkinter`, etc.
 
 ## Installation
 ```python
@@ -47,13 +47,13 @@ Setting a custom size, color, and stroke width:
 
 ## Examples
 
-- **Opening an icon with Pillow:**
+- **Using an icon with Pillow:**
 ```python
 from pytablericons import TablerIcon, FilledIcon
 
-# Load and show icon
-icon = TablerIcon.load(FilledIcon.CIRCLE_CHECK)
-icon.show()
+icon = TablerIcon.load(FilledIcon.CIRCLE_CHECK)  # Load icon
+icon.show()  # Show icon
+print(icon.size)  # Print icon size
 ```
 
 - **Using an icon with PyQt6:**
@@ -100,4 +100,4 @@ More in-depth examples can be found in the [examples](examples) folder.
 </p>
 
 ## License
-This software is licensed under the [MIT license](https://github.com/niklashenning/py-tabler-icons/blob/master/LICENSE).
+This software is licensed under the [MIT license](https://github.com/niklashenning/pytablericons/blob/master/LICENSE).

@@ -24,7 +24,7 @@ setup(
     description='A Python wrapper for the Tabler Icons library with 5237 high-quality icons',
     long_description=readme,
     long_description_content_type='text/markdown',
-    url='https://github.com/niklashenning/py-tabler-icons',
+    url='https://github.com/niklashenning/pytablericons',
     keywords=['python', 'icon', 'icons', 'svg', 'tabler-icons'],
     classifiers=[
         'Programming Language :: Python :: 3',
