@@ -1,13 +1,17 @@
-# Python Tabler Icons
+# pytablericons
 
 [![PyPI](https://img.shields.io/badge/pypi-v1.0.0-blue)](https://github.com/niklashenning/py-tabler-icons)
 [![Python](https://img.shields.io/badge/python-3.7+-blue)](https://github.com/niklashenning/py-tabler-icons)
 [![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/niklashenning/py-tabler-icons/blob/master/LICENSE)
 
-Python cross-platform wrapper for the **[Tabler Icons](https://github.com/tabler/tabler-icons)** library - a set of 5237 free MIT-licensed high-quality SVG icons for you to use in your python projects
+Python wrapper for the **[Tabler Icons](https://github.com/tabler/tabler-icons)** library - a set of 5237 free MIT-licensed high-quality SVG icons for you to use in your python projects
 
 <p align="center">
   <a href="https://tabler-icons.io/"><strong>Browse at tabler-icons.io &rarr;</strong></a>
+</p>
+
+<p align="center">
+  <img src="https://github.com/niklashenning/py-tabler-icons/assets/58544929/9b31b411-04a0-452e-9aaa-ce9b3d8a2b45" alt="Tabler Icons" width="775">
 </p>
 
 ## Features
@@ -15,11 +19,11 @@ Python cross-platform wrapper for the **[Tabler Icons](https://github.com/tabler
 - Supports custom icon size, color, and stroke width
 - Supports IDE autocompletion for the icons
 - Works cross-platform without any extra dependencies
-- Works with `PyQt5`, `PyQt6`, `PySide2`, `PySide6`, `Tkinter`, etc.
+- Easy to use with `PyQt5`, `PyQt6`, `PySide2`, `PySide6`, `Tkinter`, etc.
 
 ## Installation
 ```python
-pip install py-tabler-icons
+pip install pytablericons
 ```
 
 ## Usage
@@ -27,8 +31,16 @@ Import `TablerIcon` and call the `load()` method with the desired `OutlineIcon` 
 ```python
 from pytablericons import TablerIcon, OutlineIcon, FilledIcon
 
-icon_rotate = TablerIcon.load(OutlineIcon.ROTATE)   # Outline icon
-icon_hexagon = TablerIcon.load(FilledIcon.HEXAGON)  # Filled icon
+icon_rotate = TablerIcon.load(OutlineIcon.ROTATE)      # Outline icon
+icon_check = TablerIcon.load(FilledIcon.CIRCLE_CHECK)  # Filled icon
+```
+
+> **NOTE:** <br>...
+
+## Customization
+Setting a custom size, color, and stroke width:
+```python
+...
 ```
 
 > **NOTE:** <br>...
@@ -37,19 +49,34 @@ icon_hexagon = TablerIcon.load(FilledIcon.HEXAGON)  # Filled icon
 
 - **Opening an icon with Pillow:**
 ```python
-...
+from pytablericons import TablerIcon, FilledIcon
+
+# Load and show icon
+icon = TablerIcon.load(FilledIcon.CIRCLE_CHECK)
+icon.show()
 ```
 
 - **Using an icon with PyQt6:**
 ```python
-...
+from PyQt6.QtGui import QIcon
+from PyQt6.QtWidgets import QMainWindow, QPushButton
+from pytablericons import TablerIcon, OutlineIcon
+
+
+class Window(QMainWindow):
+    def __init__(self):
+        super().__init__(parent=None)
+        
+        # Load icon
+        icon_rotate = TablerIcon.load(OutlineIcon.ROTATE, color='#000')
+        
+        # Create button with icon
+        self.button = QPushButton(self)
+        self.button.setText('Rotate')
+        self.button.setIcon(QIcon(icon_rotate.toqpixmap()))
 ```
 
-## Customization
-Setting a custom size, color, and stroke width:
-```python
-...
-```
+More in-depth examples can be found in the [examples](examples) folder.
 
 ## Preview
 ### Outline version (<!--icons-count-outline-->4577<!--/icons-count-outline--> icons)
