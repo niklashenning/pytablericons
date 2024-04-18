@@ -1,7 +1,9 @@
 import io
 import os
-import pygame
+import contextlib
 from PIL import Image
+with contextlib.redirect_stdout(None):
+    import pygame
 from .outline_icon import OutlineIcon
 from .filled_icon import FilledIcon
 
@@ -9,18 +11,19 @@ from .filled_icon import FilledIcon
 class TablerIcon:
 
     # Constants
-    __SVG_SIZE = 24
+    __DEFAULT_SVG_SIZE = 24
 
     @staticmethod
-    def load(icon: OutlineIcon | FilledIcon, size: int = __SVG_SIZE,
+    def load(icon: OutlineIcon | FilledIcon, size: int = 24,
              color: str = "#FFF", stroke_width: float = 2.0) -> Image:
-        """...
+        """Load a specified Tabler icon into a Pillow Image
+        with the option to provide a custom size, color, and stroke width
 
-        :param icon:
-        :param size:
-        :param color:
-        :param stroke_width:
-        :return:
+        :param icon: specified Tabler icon from the OutlineIcon or FilledIcon enum
+        :param size: optional size of the icon
+        :param color: optional color of the icon
+        :param stroke_width: optional stroke-width of the icon
+        :return: specified Tabler icon as Pillow Image
         """
 
         if type(icon) == OutlineIcon:
@@ -30,24 +33,23 @@ class TablerIcon:
             color_property = 'fill'
             svg_path = TablerIcon.__get_directory() + '/icons/filled/' + icon.value
 
-        scale = size / TablerIcon.__SVG_SIZE
+        scale = size / TablerIcon.__DEFAULT_SVG_SIZE
 
         svg_string = open(svg_path, "rt").read()
-        resized_svg_string = (svg_string.replace('width="' + str(TablerIcon.__SVG_SIZE) + '"',
-                                                 'width="' + str(size) + '"')
-                              .replace('height="' + str(TablerIcon.__SVG_SIZE) + '"',
-                                       'height="' + str(size) + '"'
-                                       ' transform="scale(' + str(scale) + ')"')
-                              .replace('stroke-width="2"',
-                                       'stroke-width="' + str(stroke_width) + '"')
-                              .replace(color_property + '="currentColor"',
-                                       color_property + '="' + color + '"'))
+        adjusted_svg_string = (svg_string.replace('width="' + str(TablerIcon.__DEFAULT_SVG_SIZE) + '"',
+                                                  'width="' + str(size) + '"')
+                               .replace('height="' + str(TablerIcon.__DEFAULT_SVG_SIZE) + '"',
+                                        'height="' + str(size) + '"'
+                                        ' transform="scale(' + str(scale) + ')"')
+                               .replace('stroke-width="2"',
+                                        'stroke-width="' + str(stroke_width) + '"')
+                               .replace(color_property + '="currentColor"',
+                                        color_property + '="' + color + '"'))
 
-        svg_image = pygame.image.load(io.BytesIO(resized_svg_string.encode()))
+        svg_image = pygame.image.load(io.BytesIO(adjusted_svg_string.encode()))
         image_bytes = pygame.image.tobytes(svg_image, "RGBA")
-        image = Image.frombytes("RGBA", (size, size), image_bytes)
 
-        return image
+        return Image.frombytes("RGBA", (size, size), image_bytes)
 
     @staticmethod
     def __get_directory():
