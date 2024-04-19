@@ -29,7 +29,7 @@ pip install pytablericons
 ```
 
 ## Usage
-Import `TablerIcons` and call the `load()` method with the desired `OutlineIcon` or `FilledIcon`:
+Import `TablerIcons` and call the static `load()` method with the desired `OutlineIcon` or `FilledIcon`:
 ```python
 from pytablericons import TablerIcons, OutlineIcon, FilledIcon
 
@@ -37,7 +37,7 @@ icon_rotate = TablerIcons.load(OutlineIcon.ROTATE)      # Outline icon
 icon_check = TablerIcons.load(FilledIcon.CIRCLE_CHECK)  # Filled icon
 ```
 
-> **NOTE:** <br>...
+> **NOTE:** <br>The icon names are the same as on the tabler-icons.io site, except every letter is uppercase and hyphens are replaced with underscores.<br>Examples: `rotate` &rarr; `ROTATE`, `arrow-down-right` &rarr; `ARROW_DOWN_RIGHT`
 
 ## Customization
 Setting a custom size, color, and stroke width:
@@ -55,7 +55,7 @@ icon_custom_stroke_width = TablerIcons.load(OutlineIcon.ROTATE, stroke_width=1.5
 icon_custom = TablerIcons.load(OutlineIcon.ROTATE, size=100, color='#ff0000', stroke_width=1.5)
 ```
 
-> **NOTE:** <br>...
+> **NOTE:** <br>The color can either be a **hex color** or one of very limited **color names**. <br>Examples: `'#ec3440'`, `'#581790'`, `'red'`, `'green'`, `'blue'`
 
 ## Examples
 
