@@ -13,12 +13,12 @@ Python wrapper for the **[Tabler Icons](https://github.com/tabler/tabler-icons)*
 </p>
 
 <p align="center">
-  <img src="https://github.com/niklashenning/py-tabler-icons/assets/58544929/9b31b411-04a0-452e-9aaa-ce9b3d8a2b45" alt="Tabler Icons" width="775">
+  <img src="https://github.com/niklashenning/pytablericons/assets/58544929/e13fb020-4d5f-4e28-bd5f-0d5659bd6582" alt="pytablericons" width="1009">
 </p>
 
 ## Features
 - 5237 free MIT-licensed high-quality SVG icons
-- Supports custom icon size, color, and stroke width
+- Load icons into Pillow Image with custom size, color, and stroke width
 - Supports IDE autocompletion
 - Works cross-platform without any extra dependencies
 - Easy to use with `Pillow`, `PyQt5`, `PyQt6`, `PySide2`, `PySide6`, `Tkinter`, etc.
@@ -42,7 +42,17 @@ icon_check = TablerIcons.load(FilledIcon.CIRCLE_CHECK)  # Filled icon
 ## Customization
 Setting a custom size, color, and stroke width:
 ```python
-...
+# Width and height 100px (default: 24)
+icon_custom_size = TablerIcons.load(OutlineIcon.ROTATE, size=100)
+
+# Color red (default: '#FFF')
+icon_custom_color = TablerIcons.load(OutlineIcon.ROTATE,  color='#ff0000')
+
+# Stroke width 1.5 (default: 2.0)
+icon_custom_stroke_width = TablerIcons.load(OutlineIcon.ROTATE, stroke_width=1.5)
+
+# Combining everything
+icon_custom = TablerIcons.load(OutlineIcon.ROTATE, size=100, color='#ff0000', stroke_width=1.5)
 ```
 
 > **NOTE:** <br>...
