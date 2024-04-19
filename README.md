@@ -1,6 +1,6 @@
 # pytablericons
 
-[![PyPI](https://img.shields.io/badge/pypi-v1.0.0-blue)](https://github.com/niklashenning/pytablericons)
+[![PyPI](https://img.shields.io/badge/pypi-v1.0.0-blue)](https://pypi.org/project/pytablericons)
 [![Python](https://img.shields.io/badge/python-3.7+-blue)](https://github.com/niklashenning/pytablericons)
 [![Build](https://img.shields.io/badge/build-passing-neon)](https://github.com/niklashenning/pytablericons)
 [![Coverage](https://img.shields.io/badge/coverage-100%25-green)](https://github.com/niklashenning/pytablericons)
@@ -86,6 +86,29 @@ class Window(QMainWindow):
         self.button = QPushButton(self)
         self.button.setText('Rotate')
         self.button.setIcon(QIcon(icon_rotate.toqpixmap()))
+```
+
+- **Using an icon with Tkinter:**
+```python
+from PIL import ImageTk
+from tkinter import Tk, Button
+from tkinter.constants import *
+from pytablericons import TablerIcons, OutlineIcon
+
+
+# Create window
+root = Tk()
+
+# Load icon and convert to ImageTk
+icon_rotate = TablerIcons.load(OutlineIcon.ROTATE, size=16, color='#000', stroke_width=3.0)
+icon_rotate_tk_image = ImageTk.PhotoImage(icon_rotate)
+
+# Create button with icon
+button = Button(root, text='Rotate', image=icon_rotate_tk_image, compound=LEFT)
+button.pack(padx=50, pady=25)
+
+# Run event loop
+root.mainloop()
 ```
 
 More in-depth examples can be found in the [examples](examples) folder.
