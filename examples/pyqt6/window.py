@@ -35,6 +35,7 @@ class Window(QMainWindow):
 
         # Vertical layout
         self.vbox_layout = QVBoxLayout()
+        self.vbox_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.vbox_layout.addWidget(self.button, alignment=Qt.AlignmentFlag.AlignCenter)
         self.vbox_layout.addWidget(self.label, alignment=Qt.AlignmentFlag.AlignCenter)
         self.vbox_layout.setSpacing(20)
