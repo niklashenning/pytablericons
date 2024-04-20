@@ -111,7 +111,7 @@ button.pack(padx=50, pady=25)
 root.mainloop()
 ```
 
-More in-depth examples can be found in the [examples](examples) folder.
+More in-depth examples can be found in the [examples](https://github.com/niklashenning/pytablericons/blob/master/examples) folder.
 
 ## Preview
 ### Outline version (<!--icons-count-outline-->4577<!--/icons-count-outline--> icons)
