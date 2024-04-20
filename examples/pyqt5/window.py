@@ -17,18 +17,10 @@ class Window(QMainWindow):
         icon_rotate = TablerIcons.load(OutlineIcon.ROTATE, size=BUTTON_ICON_SIZE,
                                        color='#000', stroke_width=2.5)
 
-        # Convert icon to QImage
-        # (A workaround like this is necessary for PyQt5 if you're on Pillow version >= 10.0.0
-        #  since Qt 5 has reached end-of-life and support has been dropped in version 10.0.0.
-        #  If you're using an older Pillow version, you can use the same code as with PyQt6)
-        # See https://pillow.readthedocs.io/en/stable/deprecations.html#pyqt5-and-pyside2
-        icon_rotate_q_image = QImage(icon_rotate.tobytes('raw', 'RGBA'), icon_rotate.width,
-                                     icon_rotate.height, QImage.Format.Format_RGBA8888)
-
         # Create button with icon
         self.button = QPushButton(self)
         self.button.setText('Rotate')
-        self.button.setIcon(QIcon(QPixmap.fromImage(icon_rotate_q_image)))
+        self.button.setIcon(QIcon(self.image_to_qpixmap(icon_rotate)))
         self.button.setIconSize(QSize(BUTTON_ICON_SIZE, BUTTON_ICON_SIZE))
 
         # Load icon
@@ -36,13 +28,9 @@ class Window(QMainWindow):
         icon_check = TablerIcons.load(FilledIcon.CIRCLE_CHECK,
                                       size=PIXMAP_ICON_SIZE, color='#4444e5')
 
-        # Convert icon to QImage (same reason as above)
-        icon_check_q_image = QImage(icon_check.tobytes('raw', 'RGBA'), icon_check.width,
-                                    icon_check.height, QImage.Format.Format_RGBA8888)
-
         # Create label and display pixmap
         self.label = QLabel(self)
-        self.label.setPixmap(QPixmap.fromImage(icon_check_q_image))
+        self.label.setPixmap(self.image_to_qpixmap(icon_check))
         self.label.setFixedSize(PIXMAP_ICON_SIZE, PIXMAP_ICON_SIZE)
 
         # Vertical layout
@@ -57,3 +45,14 @@ class Window(QMainWindow):
         central_widget = QWidget()
         central_widget.setLayout(self.vbox_layout)
         self.setCentralWidget(central_widget)
+
+    def image_to_qpixmap(self, image):
+        # Convert image to QPixmap
+        # (A workaround like this is necessary for PyQt5 if you're on Pillow version >= 10.0.0
+        #  since Qt 5 has reached end-of-life and support has been dropped in version 10.0.0.
+        #  If you're using an older Pillow version, you can use the same code as with PyQt6)
+        # See https://pillow.readthedocs.io/en/stable/deprecations.html#pyqt5-and-pyside2
+
+        q_image = QImage(image.tobytes('raw', 'RGBA'), image.width,
+                         image.height, QImage.Format.Format_RGBA8888)
+        return QPixmap.fromImage(q_image)
