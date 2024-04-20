@@ -18,7 +18,7 @@ setup(
     },
     install_requires=[
         'pygame>=2.5.2',
-        'Pillow>=10.1.0'
+        'Pillow>=9.5.0'
     ],
     python_requires='>=3.7',
     description='A Python wrapper for the Tabler Icons library with 5237 high-quality icons',
