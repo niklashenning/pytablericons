@@ -1,7 +1,7 @@
 from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtGui import QIcon, QPixmap, QImage
 from PyQt5.QtWidgets import QMainWindow, QPushButton, QLabel, QWidget, QVBoxLayout
-from src.pytablericons import TablerIcons, OutlineIcon, FilledIcon
+from pytablericons import TablerIcons, OutlineIcon, FilledIcon
 
 
 class Window(QMainWindow):

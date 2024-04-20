@@ -1,4 +1,4 @@
-from src.pytablericons import TablerIcons, OutlineIcon, FilledIcon
+from pytablericons import TablerIcons, OutlineIcon, FilledIcon
 
 
 # Outline icon

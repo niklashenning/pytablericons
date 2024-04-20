@@ -1,7 +1,7 @@
 from PySide6.QtCore import QSize, Qt
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QMainWindow, QPushButton, QLabel, QWidget, QVBoxLayout
-from src.pytablericons import TablerIcons, OutlineIcon, FilledIcon
+from pytablericons import TablerIcons, OutlineIcon, FilledIcon
 
 
 class Window(QMainWindow):
