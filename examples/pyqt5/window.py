@@ -50,7 +50,7 @@ class Window(QMainWindow):
         # Convert image to QPixmap
         # (A workaround like this is necessary for PyQt5 if you're on Pillow version >= 10.0.0
         #  since Qt 5 has reached end-of-life and support has been dropped in version 10.0.0.
-        #  If you're using an older Pillow version, you can use the same code as with PyQt6)
+        #  If you're using an older Pillow version, you can just use `image.toqpixmap()`)
         # See https://pillow.readthedocs.io/en/stable/deprecations.html#pyqt5-and-pyside2
 
         q_image = QImage(image.tobytes('raw', 'RGBA'), image.width,
