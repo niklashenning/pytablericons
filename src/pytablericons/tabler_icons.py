@@ -2,20 +2,18 @@ import io
 import os
 import contextlib
 from PIL import Image
-with contextlib.redirect_stdout(None):
+with contextlib.redirect_stdout(None):  # Suppress import message
     import pygame
+from xml.etree import ElementTree
 from .outline_icon import OutlineIcon
 from .filled_icon import FilledIcon
 
 
 class TablerIcons:
 
-    # Constants
-    __DEFAULT_SVG_SIZE = 24
-
     @staticmethod
     def load(icon: OutlineIcon | FilledIcon, size: int = 24,
-             color: str = "#FFF", stroke_width: float = 2.0) -> Image:
+             color: str = '#FFF', stroke_width: float = 2.0) -> Image:
         """Load a specified Tabler icon into a Pillow Image
         with the option to provide a custom size, color, and stroke width
 
@@ -26,30 +24,36 @@ class TablerIcons:
         :return: specified Tabler icon as Pillow Image
         """
 
+        # Open and read svg file for specified icon
         if type(icon) == OutlineIcon:
-            color_property = 'stroke'
+            color_attribute = 'stroke'
             svg_path = TablerIcons.__get_directory() + '/icons/outline/' + icon.value
         else:
-            color_property = 'fill'
+            color_attribute = 'fill'
             svg_path = TablerIcons.__get_directory() + '/icons/filled/' + icon.value
 
-        scale = size / TablerIcons.__DEFAULT_SVG_SIZE
+        svg_string = open(svg_path, 'rt').read()
 
-        svg_string = open(svg_path, "rt").read()
-        adjusted_svg_string = (svg_string.replace('width="' + str(TablerIcons.__DEFAULT_SVG_SIZE) + '"',
-                                                  'width="' + str(size) + '"')
-                               .replace('height="' + str(TablerIcons.__DEFAULT_SVG_SIZE) + '"',
-                                        'height="' + str(size) + '"'
-                                        ' transform="scale(' + str(scale) + ')"')
-                               .replace('stroke-width="2"',
-                                        'stroke-width="' + str(stroke_width) + '"')
-                               .replace(color_property + '="currentColor"',
-                                        color_property + '="' + color + '"'))
+        # Parse xml data from svg string
+        ElementTree.register_namespace('', 'http://www.w3.org/2000/svg')
+        root = ElementTree.fromstring(svg_string)
 
+        # Set attributes (width, height, transform, stroke / fill, and stroke-width)
+        svg_default_size = int(root.get('width'))
+        root.set('width', str(size))
+        root.set('height', str(size))
+        root.set('transform', 'scale(' + str(size / svg_default_size) + ')')
+        root.set(color_attribute, color)
+        if root.get('stroke-width') is not None:
+            root.set('stroke-width', str(stroke_width))
+
+        # Convert adjusted svg string to svg image and then bytes
+        adjusted_svg_string = ElementTree.tostring(root, encoding='unicode')
         svg_image = pygame.image.load(io.BytesIO(adjusted_svg_string.encode()))
-        image_bytes = pygame.image.tobytes(svg_image, "RGBA")
+        image_bytes = pygame.image.tobytes(svg_image, 'RGBA')
 
-        return Image.frombytes("RGBA", (size, size), image_bytes)
+        # Return Image created from bytes
+        return Image.frombytes('RGBA', (size, size), image_bytes)
 
     @staticmethod
     def __get_directory():
