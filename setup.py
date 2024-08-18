@@ -2,7 +2,7 @@ from setuptools import setup, find_namespace_packages
 
 
 with open('README.md', 'r') as fh:
-    readme = "\n" + fh.read()
+    readme = '\n' + fh.read()
 
 setup(
     name='pytablericons',
@@ -10,11 +10,12 @@ setup(
     author='Niklas Henning',
     author_email='business@niklashenning.com',
     license='MIT',
-    packages=find_namespace_packages(where="src"),
-    package_dir={"": "src"},
+    packages=find_namespace_packages(where='src'),
+    package_dir={'': 'src'},
     package_data={
-        "pytablericons.icons.filled": ["*.svg"],
-        "pytablericons.icons.outline": ["*.svg"],
+        'pytablericons.icons.filled': ['*.svg'],
+        'pytablericons.icons.outline': ['*.svg'],
+        'pytablericons.hooks': ['*.py']
     },
     install_requires=[
         'pygame>=2.5.2',
